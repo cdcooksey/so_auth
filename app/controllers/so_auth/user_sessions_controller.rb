@@ -17,7 +17,7 @@ class SoAuth::UserSessionsController < SoAuth::ApplicationController
     user.save
 
     session[:user_id] = user.id
-
+    session[:token] = omniauth['credentials']['token']
     flash[:notice] = "Successfully logged in"
     redirect_to request.env['omniauth.origin'] || root_path
   end
